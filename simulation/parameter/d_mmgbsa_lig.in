@@ -1,0 +1,3 @@
+trajin ../1_prep/nme1/3.nme1.prod.1.crd
+strip !(:1-149) outprefix 6.nme1.lig nobox
+

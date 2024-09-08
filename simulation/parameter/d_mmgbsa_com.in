@@ -1,0 +1,5 @@
+trajin c_nme1.prod.1.crd
+strip !(:1-894) outprefix 6.nme1.com nobox
+#trajout 6.nme1.200.mdcrd
+
+

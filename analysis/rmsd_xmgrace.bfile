@@ -1,0 +1,113 @@
+# Script to plot in xmgrace by command line
+#
+# Yee Ying, DK
+#
+# Arrange (1,1,.1,.6,.6,ON,ON,ON) this is for multi graph ploting
+#FOCUS graph
+ FOCUS G0
+
+#==================INPUT DATA===================
+READ BLOCK "rmsd.nme1.com.dat"  
+block xy "1:2"
+READ BLOCK "rmsd.nme2.com.dat"  
+block xy "1:2"
+READ BLOCK "rmsd.nme3.com.dat"  
+block xy "1:2"
+READ BLOCK "rmsd.nme4.com.dat"  
+block xy "1:2"
+#
+s0 line color 1
+s0 linewidth 2.5
+S0 legend "NME1"
+#
+s1 line color 2
+s1 linewidth 2.5
+S1 legend "NME2"
+#
+s2 line color 3
+s2 linewidth 2.5
+S2  legend "NME3"
+#
+s3 line color 4
+s3 linewidth 2.5
+S3 legend "NME4"
+#
+
+#=================================================
+#TITLE of the plot
+title "NME homohexamer RMSD (WT)"
+#TITLE FONT 5
+TITLE SIZE 1.2
+
+#=================================================
+#AXIS of the plot
+#WORLD xmin, ymin, xmax, ymax (Axies range)
+ WORLD 0.0, 0.0, 20000, 3
+ 
+ xaxis  bar linestyle 1
+ xaxis  bar linewidth 2.5
+ yaxis  bar linestyle 1
+ yaxis  bar linewidth 2.5
+
+ xaxis label "Time (ns)"
+ #yaxis label "RMSD Ca (Å)"
+ yaxis label "RMSD C\f{Symbol}a (\f{Helvetica}\cE\C)"
+
+ xaxis ticklabel formula "$t/100"
+ yaxis ticklabel formula "$t-1"
+ yaxis tick major 0.5
+ yaxis tick minor 1
+ xaxis tick major 1000
+ xaxis tick minor 1
+ xaxis tick linewidth 2
+ yaxis tick linewidth 2
+ xaxis tick place normal
+ yaxis tick place normal
+
+# Set axis label font sizes
+xaxis label char size 1.2
+yaxis label char size 1.2
+
+# Set tick label font sizes
+xaxis ticklabel char size 1.0
+yaxis ticklabel char size 1.0
+
+# Set tick length
+ xaxis tick major size 0.0
+ yaxis tick major size 0.0
+ xaxis tick minor size 0.0
+ yaxis tick minor size 0.0
+
+#=================================================
+#LEGEND of the plot
+# LEGEND LINEWIDTH 1
+ LEGEND CHAR SIZE 1.0
+ LEGEND BOX PATTERN 0
+ LEGEND BOX COLOR 0
+ LEGEND BOX LINETYPE 0
+ LEGEND BOX LINEWIDTH 0
+ LEGEND BOX FILL PATTERN 0
+ legend 1.05, 1    # Position
+
+#LEGEND COLOR integer
+#AUTOSCALE
+# KILL s0 (to kill any plot)
+
+#=====================OUTPUT(PNG)====================
+# PRINT TO "../out/nme.wt.hex.rmsd.png"
+# HARDCOPY DEVICE "PNG"
+# PAGE SIZE 1000, 1000
+# DEVICE "PNG" FONT ANTIALIASING on
+# DEVICE "PNG" OP "transparent:on"
+# DEVICE "PNG" OP "compression:9"
+# PRINT
+#===============EPS FORMAT===========================
+#PRINT TO "nme1.rmsd.eps"
+#DEVICE "EPS" OP "level2"
+#PRINT
+#=========USAGE======================================================================
+#gracebat -batch rmsd_xmgrace.bfile -nosafe -hardcopy -printfile "plot/nme_homohexamer.rmsd.png" -hdevice PNG
+#====================================================================================
+#              Written by Yee Ying, Lim                                              #
+#                     DTU, Denmark                                                   #
+#====================================================================================#

@@ -1,0 +1,1 @@
+MMPBSA.py -O -i mmgbsa.in -o mmgbsa_nme1.out -do mmgbsa_decomposition_nme1.dat -sp ../simulation/nme1.solv.prmtop -cp nme1.com.dry.prmtop -rp nme1.rec.dry.prmtop -lp nme1.lig.dry.prmtop -y ../simulation/3.nme1.prod.200.crd
